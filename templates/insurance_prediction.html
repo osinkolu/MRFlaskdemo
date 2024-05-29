@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title> Professor's INSURANCE PREDICTION. </title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='insurance_prediction.css') }}">
+</head>
+  <body>
+      <div class="top-container">
+        <div class="contents">
+        PREDICT THE PROBABILITY FOR AN INSURED HOUSE TO GET BURNT.
+      </div>
+         </div>
+         <div class="story">
+           The machine learning algorithm tells if the client's house will get burnt as well as the probability for the client to come for his insurance.
+         </div>
+         
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('check_status')}}"method="post">
+    <div class="inputs">
+
+    <div class="input-row">
+    <img height="40"  src= "{{ url_for('static', filename='year.png') }}">
+    <input class="each-input" type="text" name="YearOfObservation" placeholder="YearOfObservation	" required="required" />
+    </div>
+    <div class="text">year of observation for the insured policy</div>
+
+    <div class="input-row">
+    <img height="40"  src= "{{ url_for('static', filename='time.png') }}">
+    <input class="each-input" type="text" name="Insured_Period" placeholder="Insured_Period" required="required" />
+    </div>
+    <div class="text">duration of insurance policy in Olusola Insurance. (6 months = 0.5)</div>
+
+    <div class="input-row">
+    <img height="40"  src= "{{ url_for('static', filename='residential.png') }}">
+    <select name="Residential"class="each-input"><option value=1> Residential </option><option value=0> Not Residential </option></select>
+    </div>
+    <div class="text">is the building a residential building or not</div>
+
+    <div class="input-row">
+    <img height="40"  src= "{{ url_for('static', filename='paint.png') }}">
+    <select name="Building_Painted"class="each-input"><option value=1> Painted </option><option value=0> Not Painted</option></select>
+    </div>
+    <div class="text">is the building painted or not?</div>
+
+    <div class="input-row">
+    <img height="40"  src= "{{ url_for('static', filename='wall.png') }}">
+    <select name="Building_Fenced"class="each-input"><option value=1> Fenced </option><option value=0> Not Fenced </option></select>
+    </div>
+    <div class="text">is the building fence or not?</div>
+
+    <div class="input-row">
+    <img height="40"  src= "{{ url_for('static', filename='garden.png') }}">
+    <select name="Garden"class="each-input"><option value=1> Has Garden </option><option value=0> No Garden </option></select>
+    </div>
+    <div class="text">building has garden or not? </div>
+
+    <div class="input-row">
+    <img height="40"  src= "{{ url_for('static', filename='settlement.png') }}">
+    <select name="Settlement"class="each-input"><option value=2> Urban Settlement </option><option value=0> Rural Settlement </option></select>
+    </div>
+    <div class="text">Area where the building is located.</div>
+
+    <div class="input-row">
+    <img height="40"  src= "{{ url_for('static', filename='dimension.png') }}">
+		<input class="each-input" type="text" name="Building_Dimension" placeholder="Building_Dimension" required="required" />
+    </div>
+    <div class="text">Size of the insured building in metre square(input value only).</div>
+
+    <div class="input-row">
+    <img height="40"  src= "{{ url_for('static', filename='stage.png') }}">
+    <select name="Building_Type"class="each-input"><option value=1> 1 </option><option value=2> 2 </option><option value=3> 3 </option><option value=4> 4 </option></select>
+    </div>
+    <div class="text">The type of building (Type 1, 2, 3, 4)</div>
+
+    <div class="input-row">
+    <img height="40"  src= "{{ url_for('static', filename='year.png') }}">
+		<input class="each-input" type="text" name="Date_of_Occupancy" placeholder="Date_of_Occupancy" required="required" />
+    </div>
+    <div class="text">date building was first occupied(year only)</div>
+
+    <div class="input-row">
+    <img height="40"  src= "{{ url_for('static', filename='map.png') }}">
+		<input class="each-input" type="text" name="Geo_Code" placeholder="Geo_Code" required="required" />
+    </div>
+    <div class="text">Geographical Code of the Insured building</div>
+
+        <button class="each-input" type="submit" >check_status</button>
+      </div>
+    </form>
+   <br>
+   <br>
+   {{ prediction_text }}
+   <p> </p>
+   <p> </p>
+   <div class="image-row">
+   <img id="image" height="150" src= "{{ url_for('static', filename='microsoft_reactor.jpeg') }}">
+   <img id="image" height="150" src= "{{ url_for('static', filename='zindi.png') }}">
+ </div>
+
+<div class="story">
+   This is a deployed model for the Microsoft Reactor Data Dive Bootcamp.
+</div>
+<!-- check out my mail-->
+<!--bottom area-->
+  <div class="bottom-container">
+    <div class="flex-bottom-container">
+      <div class="copyright-details">
+      copyright &copy 2020 <a href="olufemivictor.com" target="_blank">OlufemiVictorWebsite.</a> Designed and developed by Olufemi Victor.
+      </div>
+      <a href="mailto: femiosinkolu@gmail.com" target= _blank><img id="gmail-icon" src="{{ url_for('static', filename='gmail.png') }}"></a>
+      <a href="https://www.linkedin.com/in/victor-olufemi-a44924192/" target= _blank><img id="linkedin-icon" src="{{ url_for('static', filename='linkedin.png') }}"></a>
+      <a href="https://twitter.com/olufemivictort" target= _blank><img id="twitter-icon" src="{{ url_for('static', filename='twitter.png') }}"></a>
+      <a href="https://www.facebook.com/profile.php?id=100009859840576" target= _blank><img id="facebook-icon" src="{{ url_for('static', filename='facebook.png') }}"></a>
+    </div>
+  </div>
+ </body>
+</html>
